@@ -1,0 +1,41 @@
+doctype html
+html
+	head
+	title Modify a server
+	meta(name='viewport', content='width=device-width, initial-scale=1.0')
+	!= css('bootstrap.min')
+	!= css('styles')
+	!= js('jquery-2.1.0')
+	!= js('bootstrap.min')
+
+	body
+		include ../topbar
+		ol.breadcrumb
+			li
+				a(href="/") Home
+			li
+				a(href="/servers") Servers	
+			li.active Modify a Server
+		.container
+					div.panel.panel-default
+						div.panel-heading
+							h3.panel-title Modify Server Information
+						div.panel-body
+							p
+							form.form-horizontal(action="/servers/update", method="post", enctype: "application/x-www-form-urlencoded")
+								div.form-group
+									label.col-sm-2.control-label(for="name") Name: 
+									div.col-sm-10
+										input#_id(type="hidden", name="_id", value= server._id)
+										input#name(type="text", name="name", value= server.name)
+								div.form-group
+									label.col-sm-2.control-label(for="address") IP address:
+									div.col-sm-10
+										input#address(type="text", name="address", value= server.address)
+								div.form-group
+												.col-sm-offset-2
+													&nbsp; &nbsp;
+													a.btn.btn-danger(href="/servers") Cancel	
+													&nbsp;
+													input.btn.btn-primary(type="submit",value="Submit")
+		include ../footer	

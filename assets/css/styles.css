@@ -1,0 +1,34 @@
+body {
+	margin-bottom: 80px;
+}
+
+.page-header {
+	margin-top: 0;
+}
+
+.panel-body {
+	padding-top: 0;
+}
+
+.featuredImg {
+	margin-bottom: 15px;
+	width: 100%;
+}
+
+.progress {
+            width: 500px;
+            border: 1px solid black;
+            position: relative;
+            padding: 3px;
+        }
+
+.percent {
+    position: absolute;
+    left: 50%;
+}
+
+.bar {
+    height: 20px;
+    background-color: green;
+    width: 0%;
+}

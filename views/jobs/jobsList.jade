@@ -1,0 +1,95 @@
+mixin scheduledjobslist(list, edits)
+	h4
+		a(href="/jobs")= "Scheduled Jobs"
+	.table-responsive
+		table.table.table-condensed.table-striped.table-hover
+			tr
+				td
+					b File Name
+				td
+					b Position
+				if edits
+					td
+						b 
+
+			- if (typeof(list) !== 'undefined')	
+				- each job in list
+					if job.status == 'scheduled'
+						tr
+							td
+								a(href='/jobs/get/'+job._id)= job.filename
+							td= job.rank
+							if edits
+								td
+									a(href='/jobs/'+job._id)
+										span.glyphicon.glyphicon-pencil &nbsp; 
+									a(href='/jobs/delete/'+job._id)
+										span.glyphicon.glyphicon-trash
+							
+
+			- else
+				tr
+					td Error: empty jobs list
+
+
+mixin runningjobslist(list, edits)
+	h4
+		a(href="/jobs")= "Running Jobs"
+	.table-responsive
+		table.table.table-condensed.table-striped.table-hover
+			tr
+				td
+					b File Name
+				td
+					b Time (sec)
+				if edits	
+					td
+						b
+
+			- if (typeof(list) !== 'undefined')	
+				- each job in list
+					if job.status == 'running'
+						tr
+							td
+								a(href='/jobs/get/'+job._id)= job.filename
+							td= job.ETA
+							if edits
+								td
+									a(href='/jobs/'+job._id)
+										span.glyphicon.glyphicon-pencil &nbsp; 
+									a(href='/jobs/delete/'+job._id)
+										span.glyphicon.glyphicon-trash
+
+			- else
+				tr
+					td Error: empty jobs list
+
+
+mixin finishedjobslist(list, edits)
+	h4
+		a(href="/jobs")= "Finished Jobs"
+	.table-responsive
+		table.table.table-condensed.table-striped.table-hover
+			tr
+				td
+					b File Name
+				td
+					b Download
+				if edits
+					td
+						b
+
+			- if (typeof(list) !== 'undefined')	
+				- each job in list
+					if job.status == 'finished'
+						tr
+							td
+								a(href='/jobs/get/'+job._id)= job.filename
+							if edits
+								td
+									a(href='/jobs/'+job._id)
+										span.glyphicon.glyphicon-download 
+									
+			- else
+				tr
+					td Error: empty jobs list

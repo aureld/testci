@@ -1,0 +1,60 @@
+doctype html
+html
+	head
+	title Server Information
+	meta(name='viewport', content='width=device-width, initial-scale=1.0')
+	!= css('bootstrap.min')
+	!= css('styles')
+	!= js('jquery-2.1.0')
+	!= js('bootstrap.min')
+
+	body
+		include ../topbar
+		ol.breadcrumb
+			li
+				a(href="/") Home
+			li
+				a(href="/servers") Servers	
+			li.active Server Information
+		.container
+					div.panel.panel-default
+						div.panel-heading
+							h3.panel-title Server Information
+						div.panel-body
+							p
+								.row
+									.col-md-4
+										b Name
+									.col-md-8= server.dbinfo.name
+								.row
+									.col-md-4
+										b IP address
+									.col-md-8= server.dbinfo.address
+								.row
+									.col-md-4
+										b Status
+									.col-md-8= server.dbinfo.status
+							hr
+							p
+								.row
+									.col-md-4
+										b Hostname
+									.col-md-8= server.srvinfo.hostname
+								.row
+									.col-md-4
+										b Operating System
+									.col-md-8= server.srvinfo.type + ' ,' + server.srvinfo.release
+								.row
+									.col-md-4
+										b Total Memory (MB)
+									.col-md-8= server.srvinfo.memtotal
+								.row
+									.col-md-4
+										b CPU(s)
+									.col-md-8
+										- each cpu in server.srvinfo.cpus
+											p= cpu.model
+
+
+
+		include ../footer	

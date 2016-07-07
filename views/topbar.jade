@@ -1,0 +1,16 @@
+- var menu = {'home': '/', 'servers': '/servers', 'jobs': '/jobs', 'settings': '/settings'};
+
+.navbar.navbar-static-top.navbar-inverse
+		.container
+			a.navbar-brand(href='/') OptiWeb
+			button(class="navbar-toggle", data-toggle="collapse", data-target=".navHeaderCollapse")
+				span.icon-bar
+				span.icon-bar
+				span.icon-bar
+			.collapse.navbar-collapse.navHeaderCollapse
+				ul.nav.navbar-nav.navbar-right
+					- each val, key in menu
+						li
+							a(href=val)= key
+					li
+						button(type="button", href="#add", class="btn btn-primary navbar-btn") Add

@@ -1,0 +1,33 @@
+
+doctype html
+html
+	head
+	title OptiWeb
+	meta(name='viewport', content='width=device-width, initial-scale=1.0')
+	!= css('bootstrap.min')
+	!= css('styles')
+	!= js('jquery-2.1.0')
+	!= js('bootstrap.min')
+	
+	body
+
+	include topbar
+	include servers/serverlist
+	include jobs/jobsList
+
+	ol.breadcrumb
+			li.active Home
+	.container
+		.row
+			.col-md-6
+				+serverlist(List.ServerList, false)
+			.col-md-6
+				+runningjobslist(List.JobsList, false)
+
+		.row
+			.col-md-6
+				+scheduledjobslist(List.JobsList, false)
+			.col-md-6
+				+finishedjobslist(List.JobsList, false)
+
+	include footer

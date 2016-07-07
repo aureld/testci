@@ -1,0 +1,34 @@
+doctype html
+html
+	head
+	title OptiWeb
+	meta(name='viewport', content='width=device-width, initial-scale=1.0')
+	!= css('bootstrap.min')
+	!= css('styles')
+	!= js('jquery-2.1.0')
+	!= js('bootstrap.min')
+	body
+		include ../topbar
+		include jobsList
+
+		ol.breadcrumb
+			li
+				a(href="/") Home
+			li.active Jobs
+		.container
+			.row
+				.col-md-10
+					+scheduledjobslist(JobsList, true)
+			.row
+				.col-md-10
+					+runningjobslist(JobsList, true)
+
+			.row
+				.col-md-10
+					+finishedjobslist(JobsList, true)
+
+			.row
+				.col-md-6
+					a(class="btn btn-primary", href="/jobs/add") Add a Job
+
+		include ../footer

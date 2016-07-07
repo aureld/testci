@@ -1,0 +1,27 @@
+doctype html
+html
+	head
+	title OptiWeb
+	meta(name='viewport', content='width=device-width, initial-scale=1.0')
+	!= css('bootstrap.min')
+	!= css('styles')
+	!= js('jquery-2.1.0')
+	!= js('bootstrap.min')
+	body
+		include ../topbar
+		include serverlist
+
+		ol.breadcrumb
+			li
+				a(href="/") Home
+			li.active Servers
+		.container
+			.row
+				.col-md-6
+					+serverlist(ServersList, true)
+			.row
+				.col-md-6
+					a(class="btn btn-primary", href="/servers/add") Add a server
+
+		include ../footer	
+							

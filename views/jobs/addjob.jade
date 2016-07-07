@@ -1,0 +1,46 @@
+doctype html
+html
+	head
+	title Add a Job to Queue
+	meta(name='viewport', content='width=device-width, initial-scale=1.0')
+	!= css('bootstrap.min')
+	!= css('styles')
+	!= js('jquery-2.1.0')
+	!= js('bootstrap.min')
+
+
+
+
+	body
+		include ../topbar
+		ol.breadcrumb
+			li
+				a(href="/") Home
+			li
+				a(href="/jobs") Jobs	
+			li.active Add a Job
+		.container
+					div.panel.panel-default
+						div.panel-heading
+							h3.panel-title Create a  New Job
+						div.panel-body
+							p
+							form#uploadForm.form-horizontal(action="/jobs/create", method="post", enctype: "multipart/form-data")
+								div.form-group
+									label.col-sm-2.control-label(for="userFileInput") File Name: 
+									div.col-sm-10
+										input#userFileInput(type="file", name="filename")
+								div.form-group
+												.col-sm-offset-2
+													&nbsp; &nbsp;
+													a.btn.btn-danger(href="/jobs") Cancel	
+													&nbsp;
+													input.btn.btn-primary(type="submit",value="Upload")
+								span#status
+									div#progress
+										span#percent 0%
+										div#bar
+									//!= js('jquery-2.1.0')
+									//!= js('upload')
+
+		include ../footer	

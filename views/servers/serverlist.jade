@@ -1,0 +1,31 @@
+mixin serverlist(list, edits)
+	h4
+		a(href="servers") Servers
+	.table-responsive
+		table.table.table-condensed.table-striped.table-hover
+			tr
+				td
+					b name
+				td
+					b IP address
+				td
+					b status
+				td
+
+			- if (typeof(list) !== 'undefined')	
+				- each server in list
+					tr
+						td
+							a(href='/servers/get/'+server._id)= server.name
+						td= server.address
+						td= server.status
+						if edits
+							td
+								a(href='/servers/modify/'+server._id)
+									span.glyphicon.glyphicon-pencil &nbsp; 
+								a(href='/servers/delete/'+server._id)
+									span.glyphicon.glyphicon-trash
+
+			- else
+				tr
+					td Error: empty servers list
